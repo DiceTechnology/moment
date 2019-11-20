@@ -1,0 +1,26 @@
+From 129917559f40bf9ab29b8360abd2f78763fa625b Mon Sep 17 00:00:00 2001
+From: Ventsislav Dimitrov <vdimitrovv@users.noreply.github.com>
+Date: Fri, 25 Oct 2019 18:02:23 +0100
+Subject: [PATCH] [locale] fix: importing locales using path.resolve
+
+---
+ src/lib/locale/locales.js | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/lib/locale/locales.js b/src/lib/locale/locales.js
+index b0e030db..a689c97e 100644
+--- a/src/lib/locale/locales.js
++++ b/src/lib/locale/locales.js
+@@ -53,7 +53,8 @@ function loadLocale(name) {
+         try {
+             oldLocale = globalLocale._abbr;
+             var aliasedRequire = require;
+-            aliasedRequire('./locale/' + name);
++            var path = aliasedRequire('path');
++            aliasedRequire(path.resolve(__dirname, './locale/' + name));
+             getSetGlobalLocale(oldLocale);
+         } catch (e) {}
+     }
+-- 
+2.21.0 (Apple Git-122)
+

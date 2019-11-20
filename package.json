@@ -26,7 +26,7 @@
     "jsnext:main": "./src/moment.js",
     "typings": "./moment.d.ts",
     "engines": {
-        "node": "*"
+        "node": ">=8.11.3"
     },
     "repository": {
         "type": "git",
